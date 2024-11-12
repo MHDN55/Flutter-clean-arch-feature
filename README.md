@@ -89,7 +89,7 @@ Feel free to open issues or submit pull requests to improve the extension.
 
 ## Support
 
-For any issues or feature requests, please open an issue on the [GitHub repository](https://github.com/your-github-repo).
+For any issues or feature requests, please open an issue on the [GitHub repository](https://github.com/MHDN55/flutter-feature-creater).
 
 ---
 
