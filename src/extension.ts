@@ -56,14 +56,15 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class ${pascalCaseName}UseCase {
+class ${pascalCaseName} {
   final Repo _repo;
 
-  ${pascalCaseName}UseCase(this._baseRepository);
+  ${pascalCaseName}(this._baseRepository);
 
-  Future<Either<Failure, Entity>> call() async =>
-      await _repo.doSomething();
+  Future<Either<Failure, Entity>> call() async => await _repo.doSomething();
 }
+
+
     `;
 
     const folderPath = path.dirname(useCaseFilePath);
