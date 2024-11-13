@@ -63,7 +63,7 @@ class ${pascalCaseName} {
 
   Future<Either<Failure, Entity>> call() async => await _repo.doSomething();
 }
-
+ 
 
     `;
 
