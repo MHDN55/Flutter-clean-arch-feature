@@ -118,12 +118,72 @@ async function createFeatureFolders() {
     vscode.window.showInformationMessage(`Feature folders for "${featureName}" created successfully inside lib/features/`);
 }
 
+// Function to create the repository
+async function createDomainRepository() {
+    const workspaceFolders = vscode.workspace.workspaceFolders;
+    if (!workspaceFolders) {
+        vscode.window.showErrorMessage("Please open a workspace first.");
+        return;
+    }
+
+    const featureName = await vscode.window.showInputBox({ prompt: "Enter the feature name:" });
+    if (!featureName) {
+        vscode.window.showErrorMessage("Feature name is required.");
+        return;
+    }
+
+    const rootPath = workspaceFolders[0].uri.fsPath;
+    const featurePath = path.join(rootPath, 'lib', 'features', featureName);
+
+    if (!fs.existsSync(featurePath)) {
+        vscode.window.showErrorMessage(`Feature "${featureName}" does not exist.`);
+        return;
+    }
+
+    const repoName = await vscode.window.showInputBox({ prompt: "Enter the domain repository name:" });
+    if (!repoName) {
+        vscode.window.showErrorMessage("Repository name is required.");
+        return;
+    }
+
+    // Check for existing 'repo' or 'repository' folder
+    const repoFolderPath = fs.existsSync(path.join(featurePath, 'domain', 'repo'))
+        ? path.join(featurePath, 'domain', 'repo')
+        : path.join(featurePath, 'domain', 'repository');
+
+    if (!fs.existsSync(repoFolderPath)) {
+        vscode.window.showErrorMessage(`Neither "repo" nor "repository" folder exists in the domain folder for "${featureName}". Please create the feature folders first.`);
+        return;
+    }
+
+    const snakeCaseName = toSnakeCase(repoName);
+    const pascalCaseName = toPascalCase(repoName);
+    const repoFilePath = path.join(repoFolderPath, `${snakeCaseName}_repo.dart`);
+
+    const fileContent = `
+import 'package:dartz/dartz.dart';
+
+abstract class ${pascalCaseName}Repo {
+  Future<Either<Failure, Entity>> doSomething({
+    required Type something,
+  });
+}
+    `;
+
+    fs.writeFileSync(repoFilePath, fileContent.trim());
+    vscode.window.showInformationMessage(`Repository "${pascalCaseName}Repo" created successfully at ${repoFilePath}`);
+}
+
+// Activate the extension
 export function activate(context: vscode.ExtensionContext) {
     let useCaseDisposable = vscode.commands.registerCommand('flutterExtension.createUseCase', createUseCase);
     let featureDisposable = vscode.commands.registerCommand('flutterExtension.createFeatureFolders', createFeatureFolders);
+    let repositoryDisposable = vscode.commands.registerCommand('flutterExtension.createDomainRepository', createDomainRepository);
 
     context.subscriptions.push(useCaseDisposable);
     context.subscriptions.push(featureDisposable);
+    context.subscriptions.push(repositoryDisposable);
 }
 
+// Deactivate the extension
 export function deactivate() {}

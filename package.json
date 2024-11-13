@@ -12,7 +12,8 @@
     ],
     "activationEvents": [
       "onCommand:flutterExtension.createUseCase",
-      "onCommand:flutterExtension.createFeatureFolders"
+      "onCommand:flutterExtension.createFeatureFolders",
+      "onCommand:flutterExtension.createDomainRepository"
     ],
     "main": "./out/extension.js",
     "contributes": {
@@ -25,6 +26,11 @@
         {
           "command": "flutterExtension.createFeatureFolders",
           "title": "Create Feature Folders",
+          "category": "Arch"
+        },
+        {
+          "command": "flutterExtension.createDomainRepository",
+          "title": "Create Domain Repository",
           "category": "Arch"
         }
       ]
@@ -39,11 +45,11 @@
     },
     "repository": {
       "type": "git",
-      "url": "https://github.com/MHDN55/flutter-feature-creater"
+      "url": "https://github.com/MHDN55/Flutter-clean-arch-feature"
     },
     "bugs": {
-      "url": "https://github.com/MHDN55/flutter-feature-creater/issues"
+      "url": "https://github.com/MHDN55/Flutter-clean-arch-feature/issues"
     },
-    "homepage": "https://github.com/MHDN55/flutter-feature-creater#readme"
+    "homepage": "https://github.com/MHDN55/Flutter-clean-arch-feature#readme"
   }
   
