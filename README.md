@@ -98,8 +98,13 @@ The following commands are available in the Command Palette (`Ctrl+Shift+P` or `
 
 ## Release Notes
 
+### Version 1.2.0
+- **New Command:** `Create Domain Repository` for generating repositories inside the domain layer.
+- Updated folder structure to support both `repo/` and `repository/` folder naming conventions in the `domain/` directory.
+- Improved user flow by consolidating multiple tasks into a single extension for creating feature folders, use cases, and repositories.
+
 ### Version 1.1.0
-- **New Command:** `Create Domain Repository`
+- **New Command:** `Create Use Case`
 - Merged `Create Feature Folders` and `Create Use Case` functionalities into a single extension for streamlined workflow.
 
 ### Version 1.0.0
