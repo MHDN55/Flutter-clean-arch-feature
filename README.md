@@ -1,6 +1,6 @@
 # Flutter Clean Architecture Helper
 
-### A VS Code extension to streamline creating feature folders, use cases, and repositories in Flutter projects using Clean Architecture.
+### A VS Code extension to streamline creating feature folders and use cases in Flutter projects using Clean Architecture.
 
 ## Features
 
@@ -8,7 +8,6 @@ This extension provides the following functionalities:
 
 1. **Create Feature Folders**: Automatically generates the folder structure for a new feature following Clean Architecture principles.
 2. **Create Use Case**: Quickly create a use case within an existing feature.
-3. **Create Domain Repository**: Easily add a repository file within the domain layer of a specified feature.
 
 ## Commands
 
@@ -64,25 +63,6 @@ The following commands are available in the Command Palette (`Ctrl+Shift+P` or `
     }
     ```
 
-### 3. Create Domain Repository
-
-**Command:** `Create Domain Repository`
-
-- **Description**: Creates a repository interface within the domain layer of a specified feature.
-- **Usage**:
-  1. Open the Command Palette and run the `Create Domain Repository` command.
-  2. Enter the feature name (must already exist).
-  3. Enter the repository name (e.g., `UserRepo`), and a file with the following template will be created:
-    ```dart
-    import 'package:dartz/dartz.dart';
-
-    abstract class UserRepo {
-      Future<Either<Failure, User>> getUser(int userId);
-    }
-    ```
-
-    The file will be placed inside either the `repo/` or `repository/` folder in the `domain/` directory, based on the existing folder structure.
-
 ---
 
 ## Installation
@@ -97,11 +77,6 @@ The following commands are available in the Command Palette (`Ctrl+Shift+P` or `
 - TypeScript and Node.js for local development and compilation (for contributors)
 
 ## Release Notes
-
-### Version 1.2.0
-- **New Command:** `Create Domain Repository` for generating repositories inside the domain layer.
-- Updated folder structure to support both `repo/` and `repository/` folder naming conventions in the `domain/` directory.
-- Improved user flow by consolidating multiple tasks into a single extension for creating feature folders, use cases, and repositories.
 
 ### Version 1.1.0
 - **New Command:** `Create Use Case`
