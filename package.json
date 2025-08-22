@@ -2,7 +2,7 @@
   "name": "flutter-clean-arch-feature",
   "displayName": "Flutter clean arch feature",
   "description": "A VS Code extension to create feature folders and use cases for Flutter Clean Architecture projects.",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "publisher": "MHDN",
   "icon": "icon.png",
   "engines": {
