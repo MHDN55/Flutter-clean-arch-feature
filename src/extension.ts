@@ -2,7 +2,6 @@ import * as vscode from "vscode";
 
 import { createFeatureFolders } from "./feature_generator";
 import { createUseCase } from "./usecase_generator";
-// import { createDomainRepository } from "./domain_repo_generator";
 
 
 // Activate the extension
